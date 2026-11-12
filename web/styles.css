@@ -165,12 +165,51 @@ a {
 }
 
 .bio {
-  margin: 0.85rem auto 0;
-  max-width: 34ch;
-  font-size: 0.95rem;
-  line-height: 1.55;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1rem;
+  margin: 0.95rem auto 0;
+  width: 100%;
+  max-width: 22.5rem;
+  text-align: left;
+  font-size: 0.86rem;
+  line-height: 1.4;
   font-weight: 500;
   color: var(--mist);
+}
+
+.bio-col {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bio-col li {
+  position: relative;
+  padding-left: 0.85rem;
+}
+
+.bio-col li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+}
+
+.bio-col--bolles li::before {
+  background: var(--bolles-orange-bright);
+  box-shadow: 0 0 0 2px var(--bolles-orange-soft);
+}
+
+.bio-col--her li::before {
+  background: var(--her-pink);
+  box-shadow: 0 0 0 2px var(--her-pink-soft);
 }
 
 .her-mark {
@@ -178,6 +217,14 @@ a {
   font-weight: 700;
   border-bottom: 2px solid var(--her-pink);
   padding-bottom: 0.05em;
+}
+
+@media (max-width: 360px) {
+  .bio {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    max-width: 18rem;
+  }
 }
 
 .primary-links {
