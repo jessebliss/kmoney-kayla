@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KMoney_Kayla — Links</title>
-  <meta name="description" content="Kayla Bliss — starting varsity quarterback for The Bolles School flag football. Links, highlights, and news." />
-  <meta property="og:title" content="KMoney_Kayla" />
-  <meta property="og:description" content="Starting varsity QB · Bolles Flag Football · BNA HERricanes" />
+  <title>Kayla Bliss — College Recruiting</title>
+  <meta name="description" content="Kayla Bliss — varsity flag football quarterback at The Bolles School. NCAA ID, film, honors, and recruiting links for college coaches." />
+  <meta property="og:title" content="Kayla Bliss — College Recruiting" />
+  <meta property="og:description" content="Varsity QB · Bolles Flag Football · BNA HERricanes · NCAA ID 2603842274" />
   <meta property="og:image" content="./assets/kayla-avatar.jpg" />
   <link rel="icon" href="./assets/kayla-avatar.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,21 +35,38 @@
 
       <div class="hero-copy">
         <p class="handle">@kmoney_kayla</p>
-        <h1 class="brand">KMoney_Kayla</h1>
-        <div class="bio" role="group" aria-label="About Kayla">
+        <h1 class="brand">Kayla Bliss</h1>
+        <p class="recruit-headline">Varsity Flag Football Quarterback</p>
+        <p class="recruit-lede">The Bolles School · BNA <span class="her-mark">HERricanes</span> · Seeking college offers</p>
+
+        <button
+          type="button"
+          class="ncaa-id"
+          id="ncaa-copy"
+          data-ncaa="2603842274"
+          aria-label="Copy NCAA ID 2603842274"
+        >
+          <span class="ncaa-label">NCAA ID#</span>
+          <span class="ncaa-value" id="ncaa-value">2603842274</span>
+          <span class="ncaa-hint" id="ncaa-hint">Tap to copy</span>
+        </button>
+
+        <div class="bio" role="group" aria-label="Player profile">
           <ul class="bio-col bio-col--bolles" aria-label="School season">
             <li>14 years old</li>
             <li>Starting varsity quarterback</li>
             <li>The Bolles School — 1st flag football season</li>
           </ul>
-          <ul class="bio-col bio-col--her" aria-label="Off season">
+          <ul class="bio-col bio-col--her" aria-label="National and club">
+            <li>2026 USA Select Bowl</li>
+            <li>2026 USA Talent ID MVP</li>
             <li>BNA <span class="her-mark">HERricanes</span> club</li>
-            <li>Competes in the off season</li>
           </ul>
         </div>
       </div>
 
-      <nav class="primary-links" aria-label="Primary links">
+      <nav class="primary-links" aria-label="Film and profiles">
+        <p class="links-label">Film &amp; Profiles</p>
         <a class="link-btn" href="https://www.maxpreps.com/fl/jacksonville/bolles-bulldogs/athletes/kayla-bliss/?careerid=g2glffmblttcc" target="_blank" rel="noopener noreferrer">
           <span class="link-label">Max Preps</span>
           <span class="link-sub">Bolles High School Career</span>
@@ -69,13 +86,13 @@
       </nav>
     </header>
 
-    <section class="season" aria-labelledby="season-heading">
+    <section class="season" aria-labelledby="honors-heading">
       <div class="season-head">
-        <h2 id="season-heading">Season</h2>
-        <p class="season-lede">Inaugural Bolles flag football run — and the honors that followed.</p>
+        <h2 id="honors-heading">Honors</h2>
+        <p class="season-lede">Inaugural Bolles flag football season — district title, Final Four, and All-First Coast / All-News4Jax recognition.</p>
       </div>
 
-      <ul class="accolades" aria-label="Season accolades">
+      <ul class="accolades" aria-label="Season honors">
         <li>
           <a class="accolade" href="https://www.bolles.org/upper/athletics/athletics-news/athletics-news-post/~board/bolles-news/post/flag-football-wins-district-title-in-first-season" target="_blank" rel="noopener noreferrer">
             <span class="accolade-mark" aria-hidden="true"></span>
@@ -103,7 +120,7 @@
       </ul>
 
       <div class="coverage">
-        <h3 class="coverage-heading">Coverage</h3>
+        <h3 class="coverage-heading">Press</h3>
         <ul class="coverage-list">
           <li>
             <a href="https://www.bolles.org/upper/athletics/athletics-news/athletics-news-post/~board/bolles-news/post/flag-football-advances-to-final-four" target="_blank" rel="noopener noreferrer">
@@ -148,5 +165,57 @@
       <p>Kayla Bliss · The Bolles School · <span class="her-foot">BNA HERricanes</span></p>
     </footer>
   </main>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("ncaa-copy");
+      var hint = document.getElementById("ncaa-hint");
+      if (!btn || !hint) return;
+      var id = btn.getAttribute("data-ncaa") || "";
+      var resetTimer;
+
+      function setHint(text) {
+        hint.textContent = text;
+      }
+
+      function copy() {
+        function done(ok) {
+          setHint(ok ? "Copied" : "Select & copy");
+          clearTimeout(resetTimer);
+          resetTimer = setTimeout(function () {
+            setHint("Tap to copy");
+          }, 1800);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(id).then(function () {
+            done(true);
+          }).catch(function () {
+            done(fallback());
+          });
+        } else {
+          done(fallback());
+        }
+      }
+
+      function fallback() {
+        try {
+          var range = document.createRange();
+          var value = document.getElementById("ncaa-value");
+          range.selectNodeContents(value);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          var ok = document.execCommand("copy");
+          sel.removeAllRanges();
+          return ok;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      btn.addEventListener("click", copy);
+    })();
+  </script>
 </body>
 </html>
